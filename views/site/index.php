@@ -4,8 +4,10 @@ use app\models\Buku;
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Perpustakaan';
 ?>
+
+
 <div class="site-index">
        
     <?php
@@ -18,7 +20,6 @@ $this->title = 'My Yii Application';
     // $model->save();
    
     ?>
-
     <?php 
 
     $listbuku = Buku::findAll(['53', '49', '52']); ?>
