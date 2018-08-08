@@ -1,8 +1,9 @@
-<?php
+ <?php
 
 namespace app\controllers;
 
 use Yii;
+use app\models\Buku;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;

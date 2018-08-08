@@ -94,8 +94,8 @@ class BukuController extends Controller
             $model->save(false);
 
             //lokasi untuk menyimpan file
-            $sampul->saveAs(Yii::$app->basePath . '/web/upload/sampul/' . $model->sampul);
-            $berkas->saveAs(Yii::$app->basePath . '/web/upload/berkas/' . $model->berkas);
+            $sampul->saveAs(Yii::$app->basePath . '/web/upload/' . $model->sampul);
+            $berkas->saveAs(Yii::$app->basePath . '/web/upload/' . $model->berkas);
 
 
             //Menuju ke view id yg data di buat
@@ -130,7 +130,8 @@ class BukuController extends Controller
         $sampul_lama = $model->sampul;
         $berkas_lama = $model->berkas;
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()){
+
             //Mengambil data baru di layout form
             $sampul = UploadedFile::getInstance($model, 'sampul');
             $berkas = UploadedFile::getInstance($model, 'berkas');
@@ -138,14 +139,18 @@ class BukuController extends Controller
             //Jika ada data file yang dirubah maka data lama akan dihapus dan diganti dengan data baru yang sudah diambil 
 
             if ($sampul !== null) {
-                unlink(Yii::$app->basePath . '/web/upload/sampul/' . $model->sampul_lama);
+                unlink(Yii::$app->basePath . '/web/upload/' . $sampul_lama);
+                $model->sampul = time() . '_' . $sampul->name;
+                $sampul->saveAs(Yii::$app->basePath . '/web/upload/' . $model->sampul);
+
             } else {
                 $model->sampul = $sampul_lama;
             }
 
             if ($berkas !== null) {
-                unlink(Yii::$app->basePath . '/web/upload/berkas/' . $berkas_lama);
+                unlink(Yii::$app->basePath . '/web/upload/' . $berkas_lama);
                 $model->berkas = time() . '_' .$berkas->name;
+                $berkas->saveAs(Yii::$app->basePath . '/web/upload/' . $model->berkas);
             } else {
                 $model->berkas = $berkas_lama;
             }
@@ -177,8 +182,15 @@ class BukuController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+      $model = $this->findModel($id);
 
+      //Basepath sebagai tempatnya 
+      unlink(Yii::$app->basePath . '/web/upload/' . $model->sampul);
+      unlink(Yii::$app->basePath . '/web/upload/' . $model->berkas);
+
+      $model->delete();
+
+      //redirect untuk menunjukan tempat kemana akan kembali, disini kembalinya menuju ke Index
         return $this->redirect(['index']);
     }
 

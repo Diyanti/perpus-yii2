@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
               'format' =>'raw',
               'value' => function ($model){
                 if ($model->sampul != '') {
-                    return Html::img('@web/upload/sampul/'. $model->sampul,['class'=>'img-responsive','style' => 'height:150px', 'align'=>'center']);
+                    return Html::img('@web/upload/'. $model->sampul,['class'=>'img-responsive','style' => 'height:150px', 'align'=>'center']);
                 }else{
                   return '<div align="center"><h1>No Image</h1></div>';
                 }
