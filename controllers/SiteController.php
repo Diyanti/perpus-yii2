@@ -1,19 +1,15 @@
- <?php
-
+<?php
 namespace app\controllers;
-
 use Yii;
-use app\models\Buku;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-
 class SiteController extends Controller
 {
-    //untuk merubah layout
+    // Buat repleas layout dengan default test.
     public $layout = 'main';
     /**
      * {@inheritdoc}
@@ -32,15 +28,16 @@ class SiteController extends Controller
                     ],
                 ],
             ],
+            /*
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
                 ],
             ],
+            */
         ];
     }
-
     /**
      * {@inheritdoc}
      */
@@ -56,7 +53,6 @@ class SiteController extends Controller
             ],
         ];
     }
-
     /**
      * Displays homepage.
      *
@@ -64,12 +60,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        //Untuk mengubah layout yg referensinya berasal dari tes (view->layout->tes)
-        $this->layout = 'main';
+        // Buat Tampilan static sendiri
+        
+        // return $this->render('index');
 
-        return $this->render('index');
+        if (Yii::$app->user->isGuest) {
+            return $this->redirect(['buku/index']);
+
+        } else {
+            return $this->redirect(['site/login']);
+        }
+
     }
-
     /**
      * Login action.
      *
@@ -77,21 +79,20 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+
+        $this->layout = 'login';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
-
         $model->password = '';
         return $this->render('login', [
             'model' => $model,
         ]);
     }
-
     /**
      * Logout action.
      *
@@ -100,10 +101,8 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
         return $this->goHome();
     }
-
     /**
      * Displays contact page.
      *
@@ -114,14 +113,12 @@ class SiteController extends Controller
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-
             return $this->refresh();
         }
         return $this->render('contact', [
             'model' => $model,
         ]);
     }
-
     /**
      * Displays about page.
      *

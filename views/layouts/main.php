@@ -64,26 +64,12 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                         \yiister\gentelella\widgets\Menu::widget(
                             [
                                 "items" => [
-                                    ["label" => "Home", "url" => "'/site/index'", "icon" => "home"],
+                                    ["label" => "Home", "url" => ["site/index"], "icon" => "home"],
                                     ["label" => "Anggota", "url" => ["/anggota/index"], "icon" => "users"],
-                                    // ["label" => "Buku", "url" => ["/buku/index"], "icon" => "tasks"],
-                                    // ["label" => "Kategori", "url" => ["/kategori/index"], "icon" => "files-o"],
                                     ["label" => "Peminjaman", "url" => ["/peminjaman/index"], "icon" => "calendar-o"],
-                                    // ["label" => "Penerbit", "url" => ["/penerbit/index"], "icon" => "share-alt"],
-                                    // ["label" => "Penulis", "url" => ["/penulis/index"], "icon" => "pencil"],
                                     ["label" => "Petugas", "url" => ["/petugas/index"], "icon" => "male"],
                                     
-                                    // [
-                                    //     "label" => "Widget",
-                                    //     "icon" => "th",
-                                    //     "url" => " ",
-                                    //     "items" => [
-                                    //         ["label" => "Menu", "url" => ["site/menu"]],
-                                    //         ["label" => "Panel", "url" => ["site/panel"]],
-                                    //     ],
-                                    // ],
-
-                                    [
+                                      [
                                         "label" => "Buku",
                                         "url" => "#",
                                         "icon" => "tasks",
@@ -118,7 +104,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
 
                                         ],
                                     ],
-                                    ["label" => "Logout", "url" => ["/petugas/index"], "icon" => "sign-out"],
+                                    ["label" => "Logout", "url" => ["/site/logout"], "icon" => "sign-out"],
 
                                     // [
                                     //     "label" => "Multilevel",
