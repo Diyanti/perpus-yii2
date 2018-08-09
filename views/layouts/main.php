@@ -64,11 +64,10 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                         \yiister\gentelella\widgets\Menu::widget(
                             [
                                 "items" => [
-                                    ["label" => "Home", "url" => ["site/index"], "icon" => "home"],
+                                    ["label" => "Home", "url" => ["admin/index"], "icon" => "home"],
                                     ["label" => "Anggota", "url" => ["/anggota/index"], "icon" => "users"],
                                     ["label" => "Peminjaman", "url" => ["/peminjaman/index"], "icon" => "calendar-o"],
                                     ["label" => "Petugas", "url" => ["/petugas/index"], "icon" => "male"],
-                                    
                                       [
                                         "label" => "Buku",
                                         "url" => "#",

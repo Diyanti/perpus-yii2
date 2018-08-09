@@ -30,6 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'alamat:ntext',
             'telepon',
             'email:email',
+            [
+                'header' => 'Jumlah Buku',
+                'value' => function($model) {
+                    return $model->getJumlahBuku();
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

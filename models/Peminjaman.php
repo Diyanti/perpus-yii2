@@ -49,6 +49,15 @@ class Peminjaman extends \yii\db\ActiveRecord
         ];
     }
 
+     //Untuk menampilkan jumlah buku yg berkaitan dgn form view masing-masing
+    //  public function getJumlahBuku()
+    // {
+    //     return Buku::find()
+    //     ->andwhere(['id_peminjaman' => $this->id])
+    //     ->orderBy(['nama' => SORT_ASC])
+    //     -> count();
+    // }
+
         //relasi
 
     public function getBuku()

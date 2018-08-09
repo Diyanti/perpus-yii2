@@ -46,6 +46,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'tanggal_pinjam',
             'tanggal_kembali',
         ],
+
+         // [
+         //        'label' => 'Jumlah Buku',
+         //        'value' => $model->getJumlahBuku()
+         //    ],
+
     ]) ?>
 
 </div>

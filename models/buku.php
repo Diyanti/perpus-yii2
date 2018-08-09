@@ -145,6 +145,16 @@ class buku extends \yii\db\ActiveRecord
 
     }
 
+     public static function getGrafikList()
+    {
+        $data = [];
+        foreach (static::find()->all() as $buku) {
+            $data[] = [StringHelper::truncate($buku->nama, 20), (int) $kabkota->getManyBuku()->count()];
+        }
+        return $data;
+    }
+
+
     }
 
 
