@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Peminjaman;
+use app\models\User;
 
 /**
- * PeminjamanSearch represents the model behind the search form of `app\models\Peminjaman`.
+ * UserSearch represents the model behind the search form of `app\models\User`.
  */
-class PeminjamanSearch extends Peminjaman
+class UserSearch extends User
 {
     /**
      * {@inheritdoc}
@@ -18,8 +18,8 @@ class PeminjamanSearch extends Peminjaman
     public function rules()
     {
         return [
-            [['id', 'id_buku', 'id_anggota'], 'integer'],
-            [['tanggal_pinjam', 'tanggal_kembali'], 'safe'],
+            [['id', 'id_anggota', 'id_petugas', 'id_user_role', 'status'], 'integer'],
+            [['username', 'password'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class PeminjamanSearch extends Peminjaman
      */
     public function search($params)
     {
-        $query = Peminjaman::find();
+        $query = User::find();
 
         // add conditions that should always apply here
 
@@ -60,13 +60,15 @@ class PeminjamanSearch extends Peminjaman
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'id_buku' => $this->id_buku,
             'id_anggota' => $this->id_anggota,
-            'tanggal_pinjam' => $this->tanggal_pinjam,
-            'tanggal_kembali' => $this->tanggal_kembali,
+            'id_petugas' => $this->id_petugas,
+            'id_user_role' => $this->id_user_role,
+            'status' => $this->status,
         ]);
+
+        $query->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'password', $this->password]);
 
         return $dataProvider;
     }
-
 }

@@ -23,7 +23,7 @@ use kartik\file\FileInput;
     <?= $form->field($model, 'tahun_terbit')->textInput(['maxlength' => true]) ?>
 
 
-    <?php if ($model->id_penulis == null) { ?>
+    <?php //if ($model->id_penulis == null) { ?>
     <?= $form->field($model, 'id_penulis')->widget(Select2::classname(), [
             'data' =>  Penulis::getList(),
             'options' => [
@@ -33,9 +33,9 @@ use kartik\file\FileInput;
                 'allowClear' => true
             ],
         ]); ?>
-    <?php }?>
+    <?php //}?>
 
-    <?php if ($model->id_penerbit == null) { ?>
+    <?php //if ($model->id_penerbit == null) { ?>
     <?= $form->field($model, 'id_penerbit')->widget(Select2::classname(), [
             'data' =>  Penerbit::getList(),
             'options' => [
@@ -45,9 +45,9 @@ use kartik\file\FileInput;
                 'allowClear' => true
             ],
         ]); ?>
-    <?php }?>
+    <?php //}?>
 
-    <?php if ($model->id_kategori == null) { ?>
+    <?php //if ($model->id_kategori == null) { ?>
      <?= $form->field($model, 'id_kategori')->widget(Select2::classname(), [
             'data' =>  Kategori::getList(),
             'options' => [
@@ -57,7 +57,7 @@ use kartik\file\FileInput;
                 'allowClear' => true
             ],
         ]); ?>
-        <?php }?>
+        <?php //}?>
 
 
    <?php

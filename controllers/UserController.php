@@ -2,24 +2,18 @@
 
 namespace app\controllers;
 
-
 use Yii;
-use app\models\Penerbit;
-use app\models\PenerbitSearch;
+use app\models\User;
+use app\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-// require 'vendor/autoload.php';
 /**
- * PenerbitController implements the CRUD actions for Penerbit model.
+ * UserController implements the CRUD actions for User model.
  */
-class PenerbitController extends Controller
+class UserController extends Controller
 {
-    //untuk merubah layout
-    public $layout = 'main';
     /**
      * {@inheritdoc}
      */
@@ -36,12 +30,12 @@ class PenerbitController extends Controller
     }
 
     /**
-     * Lists all Penerbit models.
+     * Lists all User models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PenerbitSearch();
+        $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -51,7 +45,7 @@ class PenerbitController extends Controller
     }
 
     /**
-     * Displays a single Penerbit model.
+     * Displays a single User model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -64,13 +58,13 @@ class PenerbitController extends Controller
     }
 
     /**
-     * Creates a new Penerbit model.
+     * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Penerbit();
+        $model = new User();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -82,7 +76,7 @@ class PenerbitController extends Controller
     }
 
     /**
-     * Updates an existing Penerbit model.
+     * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -102,7 +96,7 @@ class PenerbitController extends Controller
     }
 
     /**
-     * Deletes an existing Penerbit model.
+     * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -116,53 +110,18 @@ class PenerbitController extends Controller
     }
 
     /**
-     * Finds the Penerbit model based on its primary key value.
+     * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Penerbit the loaded model
+     * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Penerbit::findOne($id)) !== null) {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    //Untuk Export ke Excel
-    // public function actionImportExcel()
-    // {
-    //     $inputFile = 'exportpenerbitexcel/branches_file.xlsx';
-    //     try{
-    //         $inputFileType = \PHPExcel_IOFactory::identify($inputFile);
-    //         $objReader = \PHPExcel_IOFactory::createReader($inputFileType);
-    //         $objPHPExcel = $objReader->load($inputFile);
-    //     }catch('Exception $e')
-    //     {
-    //         die('Error');
-    //     }
-    //     $sheet = $objPHPExcel->getSheet(0);
-    //     $highestColumn = $sheet->getHighestColumn();
-
-    //     for ( $row = 1; $row <= $hihestRow; $row++) 
-    //     { 
-    //         $rowData = $sheet->rangeToArray('A' .$row.':'.$highestColumn.$row,NULL,TRUE,FALSE');
-    //             if ($row == 1)
-    //              {
-    //                 continue;
-    //             }
-
-    //             $branch = new Branches();
-    //             $branch_id = $rowData[0][0];
-    //     }
-    // }
-    // $spreadsheet = new Spreadsheet();
-    // $sheet = $spreadsheet->getActiveSheet();
-    // $sheet->setCellValue('A1', 'Hello World !');
-
-    // $writer = new Xlsx($spreadsheet);
-    // $writer->save('hello world.xlsx');
-    
-    }
+}

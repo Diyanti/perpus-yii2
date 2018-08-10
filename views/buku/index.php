@@ -52,7 +52,10 @@ $this->params['breadcrumbs'][] = $this->title;
          [
             'attribute' => "id_kategori",
             'value' => function($data){
-                return $data->getKategori();
+                 return $data->getKategori();
+
+                //return $data->kategori->nama;
+
             }
         ],
             // 'sinopsis:ntext',

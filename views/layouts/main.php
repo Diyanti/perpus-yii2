@@ -68,6 +68,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                     ["label" => "Anggota", "url" => ["/anggota/index"], "icon" => "users"],
                                     ["label" => "Peminjaman", "url" => ["/peminjaman/index"], "icon" => "calendar-o"],
                                     ["label" => "Petugas", "url" => ["/petugas/index"], "icon" => "male"],
+                                    ["label" => "User", "url" => ["/user/index"], "icon" => "calendar-o"],
                                       [
                                         "label" => "Buku",
                                         "url" => "#",

@@ -74,6 +74,27 @@ class Kategori extends \yii\db\ActiveRecord
         -> count();
     }
 
+     public static function getKategoriCount()
+    {
+        return static::find()->count();
+    }
+
+     public function getManyBuku()
+    {
+        return $this->hasMany(Buku::class, ['id_kategori' => 'id']);
+    }
+
+    public static function getGrafikList()
+    {
+        $data = [];
+        foreach (static::find()->all() as $kategori) {
+            $data[] = [$kategori->nama, (int) $kategori->getManyBuku()->count()];
+        }
+        return $data;
+    }
+
+    
+
     }
 
    

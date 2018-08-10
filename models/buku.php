@@ -30,7 +30,7 @@ class buku extends \yii\db\ActiveRecord
     }
 
     
-    //    //untuk menampilkan di tabel buku sebagai nama
+       //untuk menampilkan di tabel buku sebagai nama
     //  public static function getPenulis()
     // {
     //     return $this->hasOne(Penulis::class, ['id' => 'id_penulis']);
@@ -46,8 +46,6 @@ class buku extends \yii\db\ActiveRecord
     //     return $this->hasOne(Kategori::className(), ['id' => 'id_kategori']);
     // }
     
-
-
     /**
      * {@inheritdoc}
      */
@@ -152,6 +150,11 @@ class buku extends \yii\db\ActiveRecord
             $data[] = [StringHelper::truncate($buku->nama, 20), (int) $kabkota->getManyBuku()->count()];
         }
         return $data;
+    }
+
+    public static function getCount()
+    {
+        return static::find()->count();
     }
 
 

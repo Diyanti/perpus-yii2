@@ -89,4 +89,17 @@ class Penulis extends \yii\db\ActiveRecord
         -> count();
     }
 
+    public function getManyBuku()
+    {
+        return $this->hasMany(Buku::class, ['id_penulis' => 'id']);
+    }
+
+    public static function getGrafikList()
+    {
+        $data = [];
+        foreach (static::find()->all() as $penulis) {
+            $data[] = [$penulis->nama, (int) $penulis->getManyBuku()->count()];
+        }
+        return $data;
+    }
 }
