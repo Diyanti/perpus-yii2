@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use app\models\Anggota;
+use app\models\Petugas;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -16,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Tambah User', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -28,11 +29,27 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'username',
             'password',
-            'id_anggota',
-            'id_petugas',
+            // 'id_anggota',
+            [
+               'attribute' =>'id_anggota',
+               'filter' => Anggota::getList(),
+               'headerOptions' => ['style' => 'text-align:center;'],
+               'value' => function($data){
+                return @$data->anggota->nama;
+               }
+           ],
+
+           [
+               'attribute' =>'id_petugas',
+               'filter' => Petugas::getList(),
+               'headerOptions' => ['style' => 'text-align:center;'],
+               'value' => function($data){
+                return @$data->petugas->nama;
+               }
+           ],
+            // 'id_petugas',
             //'id_user_role',
             //'status',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

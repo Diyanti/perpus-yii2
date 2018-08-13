@@ -47,8 +47,8 @@ class user extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
             'id' => 'ID',
             'username' => 'username',
             'password' => 'password',
-            'id_anggota' => 'Id Anggota',
-            'id_petugas' => 'Id Petugas',
+            'id_anggota' => 'Anggota',
+            'id_petugas' => 'Petugas',
             'id_user_role' => 'Id User Role',
             'status' => 'Status',
         ];
@@ -85,4 +85,15 @@ class user extends \yii\db\ActiveRecord  implements \yii\web\IdentityInterface
     {
         return $this->password == $password;
     }
+
+    public function getAnggota()
+    {
+        return $this->hasOne(Anggota::className(), ['id' => 'id_anggota']);
+    }
+
+     public function getPetugas()
+    {
+        return $this->hasOne(Petugas::className(), ['id' => 'id_petugas']);
+    }
+   
 }

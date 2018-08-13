@@ -29,8 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -48,27 +46,26 @@ $this->params['breadcrumbs'][] = $this->title;
 
             ],
 
+        //     [
+        //     'attribute' => "id_penulis",
+        //     'value' => function($data){
+        //         return $data->getPenulis();
+        //     }
+        // ],
             
-            [
-            'attribute' => "id_penulis",
-            'value' => function($data){
-                return $data->getPenulis();
-            }
-        ],
-            
-              [
-            'attribute' => "id_penerbit",
-            'value' => function($data){
-                return $data->getPenerbit();
-            }
-        ],
+        //       [
+        //     'attribute' => "id_penerbit",
+        //     'value' => function($data){
+        //         return $data->getPenerbit();
+        //     }
+        // ],
 
-             [
-            'attribute' => "id_kategori",
-            'value' => function($data){
-                return $data->getKategori();
-            }
-        ],
+        //      [
+        //     'attribute' => "id_kategori",
+        //     'value' => function($data){
+        //         return $data->getKategori();
+        //     }
+        // ],
         
             'sinopsis:ntext',
                 [

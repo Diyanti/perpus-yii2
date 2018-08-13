@@ -42,7 +42,7 @@ class Kategori extends \yii\db\ActiveRecord
             [['nama'], 'string', 'max' => 255],
         ];
     }
-
+   
     /**
      * {@inheritdoc}
      */
@@ -55,7 +55,7 @@ class Kategori extends \yii\db\ActiveRecord
 
     }
 
-    //Untuk menampilkan data buku yg berkaitan dengan form view masing-masing
+    //Untuk menampilkan data buku yg berkaitan dengan form view maing-masing
     public function findAllBuku() 
     {
         return Buku::find()
@@ -74,16 +74,19 @@ class Kategori extends \yii\db\ActiveRecord
         -> count();
     }
 
+    //Untuk menampilkan banyaknya kategori buku
      public static function getKategoriCount()
     {
         return static::find()->count();
     }
 
+    //Untuk menampilkan banyaknya buku
      public function getManyBuku()
     {
         return $this->hasMany(Buku::class, ['id_kategori' => 'id']);
     }
 
+    //Untuk menampilkan grafikList
     public static function getGrafikList()
     {
         $data = [];

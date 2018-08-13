@@ -68,7 +68,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                     ["label" => "Anggota", "url" => ["/anggota/index"], "icon" => "users"],
                                     ["label" => "Peminjaman", "url" => ["/peminjaman/index"], "icon" => "calendar-o"],
                                     ["label" => "Petugas", "url" => ["/petugas/index"], "icon" => "male"],
-                                    ["label" => "User", "url" => ["/user/index"], "icon" => "calendar-o"],
+                                    ["label" => "User", "url" => ["/user/index"], "icon" => "user"],
                                       [
                                         "label" => "Buku",
                                         "url" => "#",
@@ -187,8 +187,7 @@ $bundle = yiister\gentelella\assets\Asset::register($this);
                                 <li>
                                     <a href="javascript:;">Help</a>
                                 </li>
-                                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                                </li>
+                                <li><?= Html::a('Logout', ['site/logout'], ['style' => 'width: 20px;'])?><i class="fa fa-sign-out pull-right"></i></li>
                             </ul>
                         </li>
 

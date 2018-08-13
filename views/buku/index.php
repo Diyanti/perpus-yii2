@@ -35,29 +35,33 @@ $this->params['breadcrumbs'][] = $this->title;
             'nama',
             'tahun_terbit',
 
-            [
-            'attribute' => "id_penulis",
-            'value' => function($data){
-                return $data->getPenulis();
-            }
-        ],
-
              [
-            'attribute' => "id_penerbit",
-            'value' => function($data){
-                return $data->getPenerbit();
-            }
-        ],
+               'attribute' =>'id_penulis',
+               // 'filter' => Penulis::getList(),
+               'headerOptions' => ['style' => 'text-align:center;'],
+               'value' => function($data){
+                return @$data->penulis->nama;
+               }
+           ],
 
-         [
-            'attribute' => "id_kategori",
-            'value' => function($data){
-                 return $data->getKategori();
+              [
+               'attribute' =>'id_penerbit',
+               // 'filter' => Penulis::getList(),
+               'headerOptions' => ['style' => 'text-align:center;'],
+               'value' => function($data){
+                return @$data->penerbit->nama;
+               }
+           ],
 
-                //return $data->kategori->nama;
-
-            }
-        ],
+           [
+               'attribute' =>'id_kategori',
+               // 'filter' => Penulis::getList(),
+               'headerOptions' => ['style' => 'text-align:center;'],
+               'value' => function($data){
+                return @$data->kategori->nama;
+               }
+           ],
+         
             // 'sinopsis:ntext',
              [
               'attribute' => 'sampul',

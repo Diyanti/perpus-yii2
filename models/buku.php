@@ -31,20 +31,20 @@ class buku extends \yii\db\ActiveRecord
 
     
        //untuk menampilkan di tabel buku sebagai nama
-    //  public static function getPenulis()
-    // {
-    //     return $this->hasOne(Penulis::class, ['id' => 'id_penulis']);
-    // }
+    public function getPenulis()
+    {
+        return $this->hasOne(Penulis::className(), ['id' => 'id_penulis']);
+    }
 
-    // public static function getPenerbit()
-    // {
-    //     return $this->hasOne(Penerbit::className(), ['id' => 'id_penerbit']);
-    // }
+     public function getPenerbit()
+    {
+        return $this->hasOne(Penerbit::className(), ['id' => 'id_penerbit']);
+    }
 
-    // public static function getKategori()
-    // {
-    //     return $this->hasOne(Kategori::className(), ['id' => 'id_kategori']);
-    // }
+      public function getKategori()
+    {
+        return $this->hasOne(Kategori::className(), ['id' => 'id_kategori']);
+    }
     
     /**
      * {@inheritdoc}
@@ -67,7 +67,6 @@ class buku extends \yii\db\ActiveRecord
             [['nama', 'sampul', 'berkas'], 'string', 'max' => 255],
         ];
     }
-
     /**
      * {@inheritdoc}
      */
@@ -106,42 +105,41 @@ class buku extends \yii\db\ActiveRecord
 
     //relasi saat tabel penulis di panggil di modul buku
 
-    public function getPenulis()
-    {
-        $model = Penulis::findOne($this->id_penulis);
-        if ($model !== null) {
-            return $model->nama;
-        } else{
-            return null;
-        }
+    // public function getPenulis()
+    // {
+    //     $model = Penulis::findOne($this->id_penulis);
+    //     if ($model !== null) {
+    //         return $model->nama;
+    //     } else{
+    //         return null;
+    //     }
 
-    }
-
-    //relasi
-
-    public function getPenerbit()
-    {
-        $model = Penerbit::findOne($this->id_penerbit);
-        if ($model !== null) {
-            return $model->nama;
-        } else{
-            return null;
-        }
-
-    }
+    // }
 
     //relasi
 
-    public function getKategori()
-    {
-        $model = Kategori::findOne($this->id_kategori);
-        if ($model !== null) {
-            return $model->nama;
-        } else{
-            return null;
-        }
+    // public function getPenerbit()
+    // {
+    //     $model = Penerbit::findOne($this->id_penerbit);
+    //     if ($model !== null) {
+    //         return $model->nama;
+    //     } else{
+    //         return null;
+    //     }
 
-    }
+    // }
+
+    //relasi
+    // public function getKategori()
+    // {
+    //     $model = Kategori::findOne($this->id_kategori);
+    //     if ($model !== null) {
+    //         return $model->nama;
+    //     } else{
+    //         return null;
+    //     }
+
+    // }
 
      public static function getGrafikList()
     {
