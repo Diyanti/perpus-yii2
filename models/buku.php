@@ -28,8 +28,7 @@ class buku extends \yii\db\ActiveRecord
     {
         return \yii\helpers\ArrayHelper::map(self::find()->all(), 'id', 'nama');
     }
-
-    
+  
        //untuk menampilkan di tabel buku sebagai nama
     public function getPenulis()
     {

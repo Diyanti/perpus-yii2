@@ -31,8 +31,21 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'id',
             'username',
             'password',
-            'id_anggota',
-            'id_petugas',
+            // 'id_anggota',
+             [
+            'attribute' => "id_anggota",
+            'value' => function($data){
+                    return $data->anggota->nama;
+            }
+            ],
+
+            [
+            'attribute' => "id_petugas",
+            'value' => function($data){
+                return $data->petugas->nama;
+            }
+            ],
+            // 'id_petugas',
             'id_user_role',
             'status',
         ],

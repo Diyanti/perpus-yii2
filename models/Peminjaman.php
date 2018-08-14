@@ -60,29 +60,39 @@ class Peminjaman extends \yii\db\ActiveRecord
 
         //relasi
 
-    public function getBuku()
-    {
-        $model = Buku::findOne($this->id_buku);
-        if ($model !== null) {
-            return $model->nama;
-        } else{
-            return null;
-        }
+    // public function getBuku()
+    // {
+    //     $model = Buku::findOne($this->id_buku);
+    //     if ($model !== null) {
+    //         return $model->nama;
+    //     } else{
+    //         return null;
+    //     }
 
-    }
+    // }
 
           //relasi
+    // public function getAnggota()
+    // {
+    //     $model = Anggota::findOne($this->id_anggota);
+    //     if ($model !== null) {
+    //         return $model->nama;
+    //     } else{
+    //         return null;
+    //     }
 
-    public function getAnggota()
+    // }
+
+     //untuk menampilkan di tabel buku sebagai nama
+    public function getBuku()
     {
-        $model = Anggota::findOne($this->id_anggota);
-        if ($model !== null) {
-            return $model->nama;
-        } else{
-            return null;
-        }
-
+        return $this->hasOne(Buku::className(), ['id' => 'id_buku']);
     }
 
-     
+    //untuk menampilkan di tabel buku sebagai nama
+    public function getAnggota()
+    {
+        return $this->hasOne(Anggota::className(), ['id' => 'id_anggota']);
+    }
+
 }

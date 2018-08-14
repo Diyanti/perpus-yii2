@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
+     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             // 'id',
@@ -33,25 +33,19 @@ $this->params['breadcrumbs'][] = $this->title;
             [
             'attribute' => "id_buku",
             'value' => function($data){
-                return $data->getBuku();
+                    return $data->buku->nama;
             }
-        ],
+            ],
             // 'id_anggota',
-        [
+            [
             'attribute' => "id_anggota",
             'value' => function($data){
-                return $data->getAnggota();
+                    return $data->anggota->nama;
             }
-        ],
+            ],
             'tanggal_pinjam',
             'tanggal_kembali',
         ],
-
-         // [
-         //        'label' => 'Jumlah Buku',
-         //        'value' => $model->getJumlahBuku()
-         //    ],
-
     ]) ?>
 
 </div>

@@ -31,21 +31,45 @@ $this->params['breadcrumbs'][] = $this->title;
 
             // 'id',
            // 'id_buku',
-             [
-            'attribute' => "id_buku",
-            'value' => function($data){
-                return $data->getBuku();
-            }
-        ],
-            // 'id_anggota',
-        [
-            'attribute' => "id_anggota",
-            'value' => function($data){
-                return $data->getAnggota();
-            }
-        ],
-            'tanggal_pinjam',
-            'tanggal_kembali',
+        //      [
+        //     'attribute' => "id_buku",
+        //     'value' => function($data){
+        //         return $data->getBuku();
+        //     }
+        // ],
+            [
+               'attribute' =>'id_buku',
+               'filter' => Buku::getList(),
+               'headerOptions' => ['style' => 'text-align:center;'],
+               'value' => function($data){
+                return @$data->buku->nama;
+               }
+           ],
+           // 'id_anggota',
+        // [
+        //     'attribute' => "id_anggota",
+        //     'value' => function($data){
+        //         return $data->getAnggota();
+        //     }
+        // ],
+           [
+               'attribute' =>'id_anggota',
+               'filter' => Anggota::getList(),
+               'headerOptions' => ['style' => 'text-align:center;'],
+               'value' => function($data){
+                return @$data->anggota->nama;
+               }
+           ],
+            // 'tanggal_pinjam',
+           [
+               'attribute' =>'tanggal_pinjam',
+               'headerOptions' => ['style' => 'text-align:center;'],
+           ],
+            // 'tanggal_kembali',
+           [
+               'attribute' =>'tanggal_kembali',
+               'headerOptions' => ['style' => 'text-align:center;'],
+           ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

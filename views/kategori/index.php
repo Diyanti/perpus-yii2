@@ -18,6 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <div style="margin-top: 20px;"></div>
     <p>
         <?= Html::a('Tambah Kategori', ['create'], ['style' => 'background: #04b4ae; border:none; color:#fff; border-radius:25px; font-size:11px; padding: 13px 25px; margin-bottom:15px; text-align:center; font-weight: bold;']) ?>
+
+        <?= Html::a('Export PDF', ['kategori/jadwal-pl'], ['class' => 'btn btn-success btn-flat']) ?>
     </p>
     <div>&nbsp;</div>
 

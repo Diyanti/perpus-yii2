@@ -45,27 +45,27 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $model->tahun_terbit
 
             ],
-
-        //     [
-        //     'attribute' => "id_penulis",
-        //     'value' => function($data){
-        //         return $data->getPenulis();
-        //     }
-        // ],
+                 // 'id_penulis',
+            [
+            'attribute' => "id_penulis",
+            'value' => function($data){
+                return $data->penulis->nama;
+            }
+        ],
             
-        //       [
-        //     'attribute' => "id_penerbit",
-        //     'value' => function($data){
-        //         return $data->getPenerbit();
-        //     }
-        // ],
+              [
+            'attribute' => "id_penerbit",
+            'value' => function($data){
+                return $data->penerbit->nama;
+            }
+        ],
 
-        //      [
-        //     'attribute' => "id_kategori",
-        //     'value' => function($data){
-        //         return $data->getKategori();
-        //     }
-        // ],
+             [
+            'attribute' => "id_kategori",
+            'value' => function($data){
+                return $data->kategori->nama;
+            }
+        ],
         
             'sinopsis:ntext',
                 [

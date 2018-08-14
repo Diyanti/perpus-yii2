@@ -32,12 +32,20 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             // 'id',
-            'nama',
-            'tahun_terbit',
+            // 'nama',
+            [
+               'attribute' =>'nama',
+               'headerOptions' => ['style' => 'text-align:center;'],
+           ],
+            // 'tahun_terbit',
+           [
+               'attribute' =>'tahun_terbit',
+               'headerOptions' => ['style' => 'text-align:center;'],
+           ],
 
              [
                'attribute' =>'id_penulis',
-               // 'filter' => Penulis::getList(),
+               'filter' => Penulis::getList(),
                'headerOptions' => ['style' => 'text-align:center;'],
                'value' => function($data){
                 return @$data->penulis->nama;
@@ -46,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
               [
                'attribute' =>'id_penerbit',
-               // 'filter' => Penulis::getList(),
+               'filter' => Penerbit::getList(),
                'headerOptions' => ['style' => 'text-align:center;'],
                'value' => function($data){
                 return @$data->penerbit->nama;
@@ -55,16 +63,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
            [
                'attribute' =>'id_kategori',
-               // 'filter' => Penulis::getList(),
+               'filter' => Kategori::getList(),
                'headerOptions' => ['style' => 'text-align:center;'],
                'value' => function($data){
                 return @$data->kategori->nama;
                }
            ],
-         
+           
             // 'sinopsis:ntext',
              [
               'attribute' => 'sampul',
+              'headerOptions' => ['style' => 'text-align:center;'],
               'format' =>'raw',
               'value' => function ($model){
                 if ($model->sampul != '') {
@@ -78,6 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'berkas',
             [
                 'attribute' => 'berkas',
+                'headerOptions' => ['style' => 'text-align:center;'],
                 'format' => 'raw',
                 'value' => function ($model) {
                     if ($model->berkas !='') {
