@@ -276,13 +276,13 @@ class BukuController extends Controller
     $nomor = 1;
     foreach ($semuaBuku as $buku) {
     $table->addRow(null);
-     $table->addCell(500)->addText($nomor++, null, $headerStyle, $paragraphCenter);
-     $table->addCell(5000)->addText($buku->nama, null);
+     $table->addCell(500)->addText($nomor++, $headerStyle, $paragraphCenter);
+     $table->addCell(5000)->addText($buku->nama, null, null);
      $table->addCell(5000)->addText($buku->tahun_terbit, null, $paragraphCenter);
-     $table->addCell(5000)->addText($buku->getPenulis(), null, $paragraphCenter);
-     $table->addCell(5000)->addText($buku->getPenerbit(), null, $paragraphCenter);
-      $table->addCell(5000)->addText($buku->getKategori(), null, $paragraphCenter);
-      $table->addCell(5000)->addText($buku->sinopsis, null);
+     $table->addCell(5000)->addText(@$buku->penulis->nama, null, $paragraphCenter);
+     $table->addCell(5000)->addText(@$buku->penerbit->nama, null, $paragraphCenter);
+      $table->addCell(5000)->addText(@$buku->kategori->nama, null, $paragraphCenter);
+      $table->addCell(5000)->addText($buku->sinopsis, null, null);
 
     }
       $filename = time() . 'Jadwal-PL.docx';

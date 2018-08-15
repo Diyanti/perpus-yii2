@@ -6,25 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Kategori */
 
-$this->title = $model->nama;
-$this->params['breadcrumbs'][] = ['label' => 'Kategoris', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
-?>
+$this->title = $model->kategori_title;
 <div class="kategori-view">
-
-    <p style="float: right;">
-        <?= Html::a('Sunting', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Hapus', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-
-        <?= Html::a('Generate PDF', ['gen.pdf'], ['class' => 'btn btn-success btn-flat']) ?>
-    <h3><?= Html::encode($this->title) ?></h3>
-    </p>
 
     <?= DetailView::widget([
         'model' => $model,

@@ -21,9 +21,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Tambah Buku', ['create'], ['style' => 'background: #04b4ae; border:none; color:#fff; border-radius:25px; font-size:11px; padding: 13px 25px; margin-bottom:15px; text-align:center; font-weight: bold;']) ?>
          
-        <?= Html::a('Export word', ['buku/jadwal-pl'], ['class' => 'btn btn-success btn-flat']) ?>
+        <?= Html::a('Export word', ['buku/jadwal-pl'], ['class' => 'btn btn-primary btn-flat']) ?>
+        <?= Html::a('Export PDF', ['site/export-pdf'], ['class' => 'btn btn-warning']) ?>
      </p>
-   
     <div>&nbsp;</div>
      <?= GridView::widget([
         'dataProvider' => $dataProvider,

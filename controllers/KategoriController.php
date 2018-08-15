@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use kartik\mpdf\Pdf;
+use mPDF;
 
 /**
  * KategoriController implements the CRUD actions for Kategori model.
@@ -59,6 +60,18 @@ class KategoriController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+
+    // public function actionGenPdf($id)
+    // {
+    //     $pdf_content = $this->renderPartial('view-pdf', [
+    //         'model' => $this->findModel($id),
+    //          ]);
+
+    //         $mpdf = new mPDF();
+    //         $mpdf->WriteHTML($pdf_content) ;
+    //         $mpdf->Output();
+    //         exit();
+    // }
 
     /**
      * Creates a new Kategori model.
@@ -129,57 +142,45 @@ class KategoriController extends Controller
     }
 
     //Untuk Export ke pdf
-    public function actionReport() {
-    // get your HTML raw content without any layouts or scripts
-    $content = $this->renderPartial('_reportView');
+//     public function actionReport() {
+//     // get your HTML raw content without any layouts or scripts
+//     $content = $this->renderPartial('_reportView');
     
-    // setup kartik\mpdf\Pdf component
-    $pdf = new Pdf([
-        // set to use core fonts only
-        'mode' => Pdf::MODE_CORE, 
-        // A4 paper format
-        'format' => Pdf::FORMAT_A4, 
-        // portrait orientation
-        'orientation' => Pdf::ORIENT_PORTRAIT, 
-        // stream to browser inline
-        'destination' => Pdf::DEST_BROWSER, 
-        // your html content input
-        'content' => $content,  
-        // format content from your own css file if needed or use the
-        // enhanced bootstrap css built by Krajee for mPDF formatting 
-        'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
-        // any css to be embedded if required
-        'cssInline' => '.kv-heading-1{font-size:18px}', 
-         // set mPDF properties on the fly
-        'options' => ['title' => 'Krajee Report Title'],
-         // call mPDF methods on the fly
-        'methods' => [ 
-            'SetHeader'=>['Krajee Report Header'], 
-            'SetFooter'=>['{PAGENO}'],
-        ]
-    ]);
+//     // setup kartik\mpdf\Pdf component
+//     $pdf = new Pdf([
+//         // set to use core fonts only
+//         'mode' => Pdf::MODE_CORE, 
+//         // A4 paper format
+//         'format' => Pdf::FORMAT_A4, 
+//         // portrait orientation
+//         'orientation' => Pdf::ORIENT_PORTRAIT, 
+//         // stream to browser inline
+//         'destination' => Pdf::DEST_BROWSER, 
+//         // your html content input
+//         'content' => $content,  
+//         // format content from your own css file if needed or use the
+//         // enhanced bootstrap css built by Krajee for mPDF formatting 
+//         'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
+//         // any css to be embedded if required
+//         'cssInline' => '.kv-heading-1{font-size:18px}', 
+//          // set mPDF properties on the fly
+//         'options' => ['title' => 'Krajee Report Title'],
+//          // call mPDF methods on the fly
+//         'methods' => [ 
+//             'SetHeader'=>['Krajee Report Header'], 
+//             'SetFooter'=>['{PAGENO}'],
+//         ]
+//     ]);
     
-    // return the pdf output as per the destination setting
-    return $pdf->render(); 
-}
+//     // return the pdf output as per the destination setting
+//     return $pdf->render(); 
+// }
 
-    // public function actionExportpdf
-    // {
-    //   $this->options['mode'] = $this->mode;
-    //     $this->options['format'] = $this->format;
-    //     $this->options['default_font_size'] = $this->defaultFontSize;
-    //     $this->options['default_font'] = $this->defaultFont;
-    //     $this->options['margin_left'] = $this->marginLeft;
-    //     $this->options['margin_right'] = $this->marginRight;
-    //     $this->options['margin_top'] = $this->marginTop;
-    //     $this->options['margin_bottom'] = $this->marginBottom;
-    //     $this->options['margin_header'] = $this->marginHeader;
-    //     $this->options['margin_footer'] = $this->marginFooter;
-    //     $this->options['orientation'] = $this->orientation;
-    //     if (isset($this->tempPath) && is_dir($this->tempPath)) {
-    //         $this->options['tempDir'] = $this->tempPath;
-    //     }
-    //     $this->_mpdf = new Mpdf($this->options);
-    // }
+public function actionsamplepdf() {
+    $mpdf = new mPDF;
+    $mpdf->WriteHTML('Sample Text');
+    $mpdf->Output();
+    exit;
+}
 
 }
