@@ -22,7 +22,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Tambah Buku', ['create'], ['style' => 'background: #04b4ae; border:none; color:#fff; border-radius:25px; font-size:11px; padding: 13px 25px; margin-bottom:15px; text-align:center; font-weight: bold;']) ?>
          
         <?= Html::a('Export word', ['buku/jadwal-pl'], ['class' => 'btn btn-primary btn-flat']) ?>
-        <?= Html::a('Export PDF', ['site/export-pdf'], ['class' => 'btn btn-warning']) ?>
+        <?= Html::a('Export PDF', ['site/export-pdf'], ['class' => 'btn btn-danger']) ?>
+        <?= Html::a('Export Excel', ['buku/export-excel'], ['class' => 'btn btn-success']) ?>
      </p>
     <div>&nbsp;</div>
      <?= GridView::widget([
@@ -42,33 +43,64 @@ $this->params['breadcrumbs'][] = $this->title;
                'attribute' =>'tahun_terbit',
                'headerOptions' => ['style' => 'text-align:center;'],
            ],
+           [  
+                'attribute' => 'id_penulis',
+                'value' => function($data)
+                {
+                    // Cara 1 Pemanggil id_*** menjadi nama.
+                    //return $data->getPenulis();
+                    // Cara 2 Pemanggil id_*** menjadi nama.
+                    return $data->penulis->nama;
+                }
+            ],
 
-             [
-               'attribute' =>'id_penulis',
-               'filter' => Penulis::getList(),
-               'headerOptions' => ['style' => 'text-align:center;'],
-               'value' => function($data){
-                return @$data->penulis->nama;
-               }
-           ],
+           //   [
+           //     'attribute' =>'id_penulis',
+           //     'filter' => Penulis::getList(),
+           //     'headerOptions' => ['style' => 'text-align:center;'],
+           //     'value' => function($data){
+           //      return @$data->penulis->nama;
+           //     }
+           // ],
 
-              [
-               'attribute' =>'id_penerbit',
-               'filter' => Penerbit::getList(),
-               'headerOptions' => ['style' => 'text-align:center;'],
-               'value' => function($data){
-                return @$data->penerbit->nama;
-               }
-           ],
+            [  
+                'attribute' => 'id_penerbit',
+                'value' => function($data)
+                {
+                    // Cara 1 Pemanggil id_*** menjadi nama.
+                    //return $data->getPenulis();
+                    // Cara 2 Pemanggil id_*** menjadi nama.
+                    return $data->penerbit->nama;
+                }
+            ],
+           //    [
+           //     'attribute' =>'id_penerbit',
+           //     'filter' => Penerbit::getList(),
+           //     'headerOptions' => ['style' => 'text-align:center;'],
+           //     'value' => function($data){
+           //      return @$data->penerbit->nama;
+           //     }
+           // ],
 
-           [
-               'attribute' =>'id_kategori',
-               'filter' => Kategori::getList(),
-               'headerOptions' => ['style' => 'text-align:center;'],
-               'value' => function($data){
-                return @$data->kategori->nama;
-               }
-           ],
+            [  
+                'attribute' => 'id_kategori',
+                'value' => function($data)
+                {
+                    // Cara 1 Pemanggil id_*** menjadi nama.
+                    //return $data->getPenulis();
+                    // Cara 2 Pemanggil id_*** menjadi nama.
+                    return $data->kategori->nama;
+                }
+            ],
+
+           // [
+           //     'attribute' =>'id_kategori',
+           //     'filter' => Kategori::getList(),
+           //     'headerOptions' => ['style' => 'text-align:center;'],
+           //     'value' => function($data){
+           //      return @$data->kategori->nama;
+           //     }
+           // ],
            
             // 'sinopsis:ntext',
              [

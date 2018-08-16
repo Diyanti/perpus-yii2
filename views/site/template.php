@@ -92,9 +92,8 @@ table {
   </tr>
  </thead>
  <?php $i=1; foreach($model as $data){ ?>
-
     <tr>
-     <td><?= '$i' ?></td>
+     <td><?= $i ?></td>
      <td><?= $data->nama ?></td>
      <td><?= $data->tahun_terbit ?></td>
      <td><?= $data->penerbit->nama ?></td>

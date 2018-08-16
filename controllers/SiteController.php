@@ -73,7 +73,6 @@ class SiteController extends Controller
         } else {
             return $this->redirect(['site/login']);
         }
-
     }
     /**
      * Login action.

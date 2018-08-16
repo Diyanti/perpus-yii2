@@ -198,8 +198,8 @@ class PeminjamanController extends Controller
         foreach ($semuaPeminjaman as $peminjaman) {
             $table->addRow(null);
             $table->addCell(500)->addText($nomor++, null, $headerStyle, $paragraphCenter);
-            $table->addCell(5000)->addText($peminjaman->getBuku(), null, $paragraphCenter);
-            $table->addCell(5000)->addText($peminjaman->getAnggota(), null, $paragraphCenter);
+            $table->addCell(5000)->addText($peminjaman->buku->nama, null, $paragraphCenter);
+            $table->addCell(5000)->addText($peminjaman->anggota->nama, null, $paragraphCenter);
             $table->addCell(5000)->addText($peminjaman->tanggal_pinjam, null, $paragraphCenter);
             $table->addCell(5000)->addText($peminjaman->tanggal_kembali, null, $paragraphCenter);
         }
